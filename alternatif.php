@@ -1,5 +1,5 @@
 <?php
-include_once 'header.php';
+include_once './dasboard/header_new.php';
 include_once 'includes/alternatif.inc.php';
 $pro = new Alternatif($db);
 $stmt = $pro->readAll();

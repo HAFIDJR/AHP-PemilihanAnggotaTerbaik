@@ -1,5 +1,5 @@
 <footer class="text-center">&copy; Kelompok 1 Sistem Informasi ~ Tugas SPK AHP</footer>
-	</div>
+  </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery-1.11.3.min.js"></script>
@@ -8,11 +8,13 @@
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap.min.js"></script>
     <script>
-    	$(document).ready(function() {
+      $(document).ready(function() {
 
-    		$('#tabeldata').DataTable();
+        $('#tabeldata').DataTable();
 
-		});
+    });
+    
     </script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </body>
 </html>

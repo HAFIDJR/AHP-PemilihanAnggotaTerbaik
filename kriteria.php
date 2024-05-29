@@ -1,5 +1,5 @@
 <?php
-include_once 'header.php';
+include_once './dasboard/header_new.php';
 include_once 'includes/kriteria.inc.php';
 $pro = new Kriteria($db);
 $stmt = $pro->readAll();

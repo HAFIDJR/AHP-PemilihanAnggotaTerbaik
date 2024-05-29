@@ -1,5 +1,5 @@
 <?php
-include_once "includes/config.php";
+include_once './dasboard/header_new.php';
 $database = new Config();
 $db = $database->getConnection();
 

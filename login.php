@@ -3,20 +3,18 @@ include_once 'includes/config.php';
 
 $config = new Config();
 $db = $config->getConnection();
-	
-if($_POST){
-	
+
+if ($_POST) {
+
 	include_once 'includes/login.inc.php';
 	$login = new Login($db);
 
 	$login->userid = $_POST['username'];
-	$login->passid = md5($_POST['password']);
-	
-	if($login->login()){
+	$login->passid = $_POST['password'];  // hash password
+	echo $login->passid;
+	if ($login->login()) {
 		echo "<script>location.href='index.php'</script>";
-	}
-	
-	else{
+	} else {
 		echo "<script>alert('Gagal Total')</script>";
 	}
 }
@@ -24,21 +22,21 @@ if($_POST){
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Metode AHP (Analitycal Hierarchy Process) : Sistem Pendukung Keputusan</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Metode AHP (Analitycal Hierarchy Process) : Sistem Pendukung Keputusan</title>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
   </head>
   <body style="background: #ffffff url(images/back1.jpg) left bottom fixed;">
   
@@ -52,43 +50,42 @@ if($_POST){
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-		  <a class="navbar-brand" href="http://www.kodetekno.ml/">AHP (Analitycal Hierarchy Process)</a>
+		  <a class="navbar-brand" href="">AHP (Analitycal Hierarchy Process)</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		  <ul class="nav navbar-nav navbar-right">
-			<li><a href="http://q-young.blogspot.com/">elniqi 2018</a></li>
+			<li><h4 class ="navbar-brand"> Kelompok  7 Hebat</h4></li>
 		  </ul>
 		</div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
 
 	 <div class="container">
-	 	<div class="row">
-	 		<h6>Kelompok 1 (SI Malam)</h6><br>
-	<p>Teguh,Ridwan,Chatur,Luqni,Nasir</p>
+		 <div class="row">
+			 <h6>Kelompok 7 </h6><br>
+	<p>M Hafid Nur Firmansyah , Rizal (nama lengkap e sopo njirr)</p>
 
 
-	 	</div>
+		 </div>
 		<div class="row">
 		  <div class="col-xs-12 col-sm-8 col-md-8">&nbsp;</div>
 		  <div class="col-xs-12 col-sm-4 col-md-4">
-		  	<div style="margin-top: 100px;" class="panel panel-default"><div class="panel-body">
-		  		<div class="text-center"><h4>Member Area</h4></div>
-		  		<form method="post">
+			  <div style="margin-top: 100px;" class="panel panel-default"><div class="panel-body">
+				  <div class="text-center"><h4>Member Area</h4></div>
+				  <form method="post">
 				  <div class="form-group">
-				    <label for="InputUsername1">Username</label>
-				    <input type="text" class="form-control" name="username"  id="InputUsername1" placeholder="Username">
+					<label for="InputUsername1">Username</label>
+					<input type="text" class="form-control" name="username"  id="InputUsername1" placeholder="Username">
 				  </div>
 				  <div class="form-group">
-				    <label for="InputPassword1">Password</label>
-				    <input type="password" class="form-control" name="password" id="InputPassword1" placeholder="Password">
+					<label for="InputPassword1">Password</label>
+					<input type="password" class="form-control" name="password" id="InputPassword1" placeholder="Password">
 				  </div>
-				  <p><small style="color:#999;">Username: admin dan Password: admin</small></p>
 				  <button type="submit" class="btn btn-primary">Login</button>
 				</form>
-		  	</div></div>
+			  </div></div>
 		  </div>
 		</div>
 	</div>
@@ -96,9 +93,9 @@ if($_POST){
 
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
   </body>
 </html>

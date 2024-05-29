@@ -16,7 +16,7 @@ class Bobot{
 	
 	function insert($a,$b,$c){
 		
-		$query = "insert into ".$this->table_name." values('$a','$b','','$c')";
+		$query = "insert into ".$this->table_name." values('$a','$b',0,'$c')";
 		$stmt = $this->conn->prepare($query);
 		
 		if($stmt->execute()){
@@ -77,7 +77,7 @@ class Bobot{
 
 	function readAll1($a, $b){
 
-		$query = "SELECT * FROM ".$this->table_name." where kriteria_pertama = '$a' and kriteria_kedua = '$b' LIMIT 0,1";
+		$query = "SELECT * FROM ".$this->table_name." where kriteria_pertama = '$a' and kriteria_kedua = '$b'";
 		$stmt = $this->conn->prepare( $query );
 		$stmt->execute();
 		
@@ -117,7 +117,7 @@ class Bobot{
 	
 	function readSum2($a){
 
-		$query = "SELECT sum(hasil_analisa_kriteria) as jumkr2 FROM ".$this->table_name." where kriteria_kedua = '$a'";
+		$query = "SELECT sum(hasil_analisa_kriteria) as jumkr2 FROM ".$this->table_name." where kriteria_pertama = '$a'";
 		$stmt = $this->conn->prepare( $query );
 		$stmt->execute();
 		
@@ -169,7 +169,7 @@ class Bobot{
 		
 		$stmt = $this->conn->prepare($query);
 
-		if($result = $stmt->execute()){
+		if($stmt->execute()){
 			return true;
 		}else{
 			return false;

@@ -1,5 +1,5 @@
 <?php
-include_once 'header.php';
+include_once './dasboard/header_new.php';
 include_once 'includes/alternatif.inc.php';
 $pro1 = new Alternatif($db);
 $stmt1 = $pro1->readAll();
@@ -19,11 +19,6 @@ $stmtx1y = $pro->readBob();
 $stmtx2y = $pro->readBob();
 ?>
 <div class="row">
-	<div class="col-xs-12 col-sm-12 col-md-2">
-		<?php
-			include_once 'sidebar.php';
-		?>
-	</div>
 	<div class="col-xs-12 col-sm-12 col-md-10">
 	<br/>
 	
@@ -206,6 +201,3 @@ $stmtx2y = $pro->readBob();
 		    	
 	</div>   	
 </div>
-<?php
-include_once 'footer.php';
-?>

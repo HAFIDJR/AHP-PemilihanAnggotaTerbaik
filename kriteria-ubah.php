@@ -1,5 +1,5 @@
 <?php
-include_once 'header.php';
+include_once './dasboard/header_new.php';
 include_once 'includes/nilai.inc.php';
 $pgn = new Nilai($db);
 
@@ -45,7 +45,7 @@ if($_POST){
 				    <label for="tp">Nama Kriteria</label>
 				    <input type="text" class="form-control" id="nm" name="nm" value="<?php echo $eks->nm; ?>">
 				    <!-- <select class="form-control" id="nm" name="nm">
-				    	<option><?php echo $eks->tp; ?></option>
+				    	<option><?php echo $eks->nm; ?></option>
 				    	<option value='benefit'>Benefit</option>
 				    	<option value='cost'>Cost</option>
 				    </select> -->
@@ -54,7 +54,7 @@ if($_POST){
 				    <label for="jm">Bobot Kriteria</label>
 				    <input type="text" class="form-control" id="bb" name="bb" value="<?php echo $eks->bb; ?>">
 				    <!-- <select class="form-control" id="bb" name="bb">
-				    	<option><?php echo $eks->jm; ?></option>
+				    	<option><?php echo $eks->bb; ?></option>
 				    	<?php
 						$stmt2 = $pgn->readAll();
 						while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){

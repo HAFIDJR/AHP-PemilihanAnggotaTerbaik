@@ -28,14 +28,16 @@ class Login
 
     protected function checkCredentials()
     {
-        $stmt = $this->conn->prepare('SELECT * FROM '.$this->table_name.' WHERE username=? and password=? ');
+        $stmt = $this->conn->prepare('SELECT * FROM '.$this->table_name.' WHERE username=?');
         $stmt->bindParam(1, $this->userid);
-        $stmt->bindParam(2, $this->passid);
+        // $stmt->bindParam(2, $this->passid);
         $stmt->execute();
+
         if ($stmt->rowCount() > 0) {
             $data = $stmt->fetch(PDO::FETCH_ASSOC);
             $submitted_pass = $this->passid;
-            if ($submitted_pass == $data['password']) {
+            // verify password hash
+            if (password_verify($submitted_pass,$data["password"])) {
                 return $data;
             }
         }
