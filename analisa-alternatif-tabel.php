@@ -19,11 +19,11 @@ if (isset($altkriteria)) {
 		$count_select_alternatif = 0;
 		$count_option = 0;
 		for ($i = 0; $i < $count * $count; $i++) {
-			print('nl'.strval($count_select_alternatif +1));
-			$pro->insert($_POST['A'.strval($count_option + 1)], $_POST['nl'.strval($count_select_alternatif +1)], $_POST['A'.strval($count_option+2)], $altkriteria);
-			$count_option = $count_option+2;
+			print('nl' . strval($count_select_alternatif + 1));
+			$pro->insert($_POST['A' . strval($count_option + 1)], $_POST['nl' . strval($count_select_alternatif + 1)], $_POST['A' . strval($count_option + 2)], $altkriteria);
+			$count_option = $count_option + 2;
 			$count_select_alternatif += 1;
-			
+
 		}
 	}
 ?>
@@ -61,9 +61,9 @@ if (isset($altkriteria)) {
 						<th><?php echo $pro->kri ?></th>
 						<?php
 						while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) {
-						?>
-							<th><?php echo $row2['nama_alternatif'] ?></th>
-						<?php
+							?>
+								<th><?php echo $row2['nama_alternatif'] ?></th>
+							<?php
 						}
 						?>
 					</tr>
@@ -72,28 +72,28 @@ if (isset($altkriteria)) {
 				<tbody>
 					<?php
 					while ($row3 = $stmt3->fetch(PDO::FETCH_ASSOC)) {
-					?>
-						<tr>
-							<th style="vertical-align:middle;"><?php echo $row3['nama_alternatif'] ?></th>
-							<?php
-							$stmt4 = $pro->readAll2();
-							while ($row4 = $stmt4->fetch(PDO::FETCH_ASSOC)) {
-							?>
-								<td style="vertical-align:middle;">
-									<?php
-									if ($row3['id_alternatif'] == $row4['id_alternatif']) {
-										echo '1';
-									} else {
-										$pro->readAll1($row3['id_alternatif'], $row4['id_alternatif'], $altkriteria);
-										echo number_format($pro->kp, 3, '.', ',');
-									}
+						?>
+							<tr>
+								<th style="vertical-align:middle;"><?php echo $row3['nama_alternatif'] ?></th>
+								<?php
+								$stmt4 = $pro->readAll2();
+								while ($row4 = $stmt4->fetch(PDO::FETCH_ASSOC)) {
 									?>
-								</td>
-							<?php
-							}
-							?>
-						</tr>
-					<?php
+										<td style="vertical-align:middle;">
+											<?php
+											if ($row3['id_alternatif'] == $row4['id_alternatif']) {
+												echo '1';
+											} else {
+												$pro->readAll1($row3['id_alternatif'], $row4['id_alternatif'], $altkriteria);
+												echo number_format($pro->kp, 3, '.', ',');
+											}
+											?>
+										</td>
+									<?php
+								}
+								?>
+							</tr>
+						<?php
 					}
 					?>
 				</tbody>
@@ -103,8 +103,8 @@ if (isset($altkriteria)) {
 						<?php
 						$stmt5 = $pro->readAll2();
 						while ($row5 = $stmt5->fetch(PDO::FETCH_ASSOC)) {
-						?>
-							<th><?php
+							?>
+								<th><?php
 								$pro->readSum1($row5['id_alternatif'], $altkriteria);
 								echo number_format($pro->nak, 3, '.', ',');
 								if ($pro->insert3($row5['id_alternatif'], $altkriteria, $pro->nak)) {
@@ -112,7 +112,7 @@ if (isset($altkriteria)) {
 									$pro->insert5($pro->nak, $row5['id_alternatif'], $altkriteria);
 								}
 								?></th>
-						<?php
+							<?php
 						}
 						?>
 					</tr>
@@ -129,9 +129,9 @@ if (isset($altkriteria)) {
 					$stmt2x = $pro->readAll2();
 					$stmt3x = $pro->readAll2();
 					while ($row2x = $stmt2x->fetch(PDO::FETCH_ASSOC)) {
-					?>
-						<th><?php echo $row2x['nama_alternatif'] ?></th>
-					<?php
+						?>
+							<th><?php echo $row2x['nama_alternatif'] ?></th>
+						<?php
 					}
 					?>
 					<th>Skor</th>
@@ -141,42 +141,42 @@ if (isset($altkriteria)) {
 			<tbody>
 				<?php
 				while ($row3x = $stmt3x->fetch(PDO::FETCH_ASSOC)) {
-				?>
-					<tr>
-						<th style="vertical-align:middle;"><?php echo $row3x['nama_alternatif'] ?></th>
-						<?php
-						$stmt4x = $pro->readAll2();
-						while ($row4x = $stmt4x->fetch(PDO::FETCH_ASSOC)) {
-						?>
-							<td style="vertical-align:middle;">
-								<?php
-								$pro->readAll3($row4x['id_alternatif'], $altkriteria);
-								$jakx = $pro->jak;
-								if ($row3x['id_alternatif'] == $row4x['id_alternatif']) {
-									$hs1 = 1 / $jakx;
-									$pro->insert2($hs1, $row3x['id_alternatif'], $row4x['id_alternatif'], $altkriteria);
-									echo number_format($hs1, 3, '.', ',');
-								} else {
-									$pro->readAll1($row3x['id_alternatif'], $row4x['id_alternatif'], $altkriteria);
-									$kpx = $pro->kp;
-									$jmk = $kpx / $jakx;
-									$pro->insert2($jmk, $row3x['id_alternatif'], $row4x['id_alternatif'], $altkriteria);
-									echo "p".number_format($jmk, 3, '.', ',');
-								}
+					?>
+						<tr>
+							<th style="vertical-align:middle;"><?php echo $row3x['nama_alternatif'] ?></th>
+							<?php
+							$stmt4x = $pro->readAll2();
+							while ($row4x = $stmt4x->fetch(PDO::FETCH_ASSOC)) {
 								?>
-							</td>
-						<?php
-						}
-						?>
-						<th style="vertical-align:middle;"><?php
-															$pro->readAvg($row3x['id_alternatif'],$altkriteria); //Revisi
-															$bbt = $pro->hak;
-															print_r("INI".$bbt." ");
-															$pro->insert4($bbt, $row3x['id_alternatif'], $altkriteria); //test sini
-															echo number_format($bbt, 3, '.', ',');
-															?></th>
-					</tr>
-				<?php
+									<td style="vertical-align:middle;">
+										<?php
+										$pro->readAll3($row4x['id_alternatif'], $altkriteria);
+										$jakx = $pro->jak;
+										if ($row3x['id_alternatif'] == $row4x['id_alternatif']) {
+											$hs1 = 1 / $jakx;
+											$pro->insert2($hs1, $row3x['id_alternatif'], $row4x['id_alternatif'], $altkriteria);
+											echo number_format($hs1, 3, '.', ',');
+										} else {
+											$pro->readAll1($row3x['id_alternatif'], $row4x['id_alternatif'], $altkriteria);
+											$kpx = $pro->kp;
+											$jmk = $kpx / $jakx;
+											$pro->insert2($jmk, $row3x['id_alternatif'], $row4x['id_alternatif'], $altkriteria);
+											echo "p" . number_format($jmk, 3, '.', ',');
+										}
+										?>
+									</td>
+								<?php
+							}
+							?>
+							<th style="vertical-align:middle;"><?php
+							$pro->readAvg($row3x['id_alternatif'], $altkriteria); //Revisi
+							$bbt = $pro->hak;
+							print_r("INI" . $bbt . " ");
+							$pro->insert4($bbt, $row3x['id_alternatif'], $altkriteria); //test sini
+							echo number_format($bbt, 3, '.', ',');
+							?></th>
+						</tr>
+					<?php
 				}
 				?>
 			</tbody>
@@ -186,18 +186,18 @@ if (isset($altkriteria)) {
 					<?php
 					$stmt5x = $pro->readAll2();
 					while ($row5x = $stmt5x->fetch(PDO::FETCH_ASSOC)) {
-					?>
-						<th><?php
+						?>
+							<th><?php
 							$pro->readSum2($row5x['id_alternatif'], $altkriteria);
 							echo number_format($pro->nak, 3, '.', ',');
 							?></th>
-					<?php
+						<?php
 					}
 					?>
 					<th><?php
-						$pro->readSum3($altkriteria);
-						echo number_format($pro->bb, 3, '.', ',');
-						?></th>
+					$pro->readSum3($altkriteria);
+					echo number_format($pro->bb, 3, '.', ',');
+					?></th>
 				</tr>
 			</tfoot>
 
@@ -205,9 +205,7 @@ if (isset($altkriteria)) {
 	</div>
 </div>
 
-<?php
-include_once 'footer.php';
-?>
+
 <script>
 	if (window.history.replaceState) {
 		window.history.replaceState(null, null, window.location.href);

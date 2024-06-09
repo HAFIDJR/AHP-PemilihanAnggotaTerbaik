@@ -1,5 +1,6 @@
 <?php
-include_once "includes/config.php";
+
+include_once "includes/config.php ";
 $database = new Config();
 $db = $database->getConnection();
 
@@ -9,11 +10,11 @@ $ia = isset($_GET['ia']) ? $_GET['ia'] : die('ERROR: missing ID.');
 $pro->ia = $ia;
 $ik = isset($_GET['ik']) ? $_GET['ik'] : die('ERROR: missing ID.');
 $pro->ik = $ik;
-	
-if($pro->delete()){
+
+if ($pro->delete()) {
 	echo "<script>location.href='rangking.php';</script>";
-} else{
+} else {
 	echo "<script>alert('Gagal Hapus Data');location.href='rangking.php';</script>";
-		
+
 }
 ?>

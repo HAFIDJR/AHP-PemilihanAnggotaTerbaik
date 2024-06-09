@@ -7,27 +7,27 @@ $eks->id = $_SESSION['id_pengguna'];
 
 $eks->readOne();
 
-if($_POST){
+if ($_POST) {
 
-    $eks->nl = $_POST['nl'];
-    $eks->un = $_POST['un'];
-    $eks->pw = md5($_POST['pw']);
-    
-    if($eks->update()){
-?>
-<div class="alert alert-success alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Berhasil!</strong> Anda telah mengubah profil sendiri.
-</div>
-<?php
-    } else{
-?>
-<div class="alert alert-danger alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Gagal Ubah Profil!</strong> Terjadi kesalahan, coba sekali lagi.
-</div>
-<?php
-    }
+  $eks->nl = $_POST['nl'];
+  $eks->un = $_POST['un'];
+  $eks->pw = md5($_POST['pw']);
+
+  if ($eks->update()) {
+    ?>
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Berhasil!</strong> Anda telah mengubah profil sendiri.
+    </div>
+    <?php
+  } else {
+    ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Gagal Ubah Profil!</strong> Terjadi kesalahan, coba sekali lagi.
+    </div>
+    <?php
+  }
 }
 ?>
         <div class="row">
@@ -57,6 +57,3 @@ if($_POST){
             <?php include_once 'sidebar.php'; ?>
           </div>
         </div>
-        <?php
-include_once 'footer.php';
-?>

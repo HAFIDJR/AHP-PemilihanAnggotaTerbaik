@@ -1,5 +1,6 @@
 <?php
-include_once 'header.php';
+// include_once 'header.php';
+include_once './dasboard/header_new.php';
 $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: missing ID.');
 
 include_once 'includes/alternatif.inc.php';

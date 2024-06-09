@@ -1,5 +1,5 @@
-<?php  
-include "header.php";
+<?php
+include_once './dasboard/header_new.php';
 include_once 'includes/user.inc.php';
 $pro = new User($db);
 $stmt = $pro->readAll();
@@ -24,20 +24,20 @@ $stmt = $pro->readAll();
         </thead>
         <tbody>
     <?php
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-    ?>
-            <tr>
-                <td><?php echo $row['id_pengguna'] ?></td>
-    	    <td><?php echo $row['nama_lengkap'] ?></td>
-    	    <td><?php echo $row['username'] ?></td>
-            <td class="text-center">
-    		  <a href="user-ubah.php?id=<?php echo $row['id_pengguna'] ?>" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-    		  <a href="user-hapus.php?id=<?php echo $row['id_pengguna'] ?>" onclick="return confirm('Yakin ingin menghapus data')" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-    	    </td>
-            </tr>
-    <?php
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        ?>
+                    <tr>
+                        <td><?php echo $row['id_pengguna'] ?></td>
+                    <td><?php echo $row['nama_lengkap'] ?></td>
+                    <td><?php echo $row['username'] ?></td>
+                    <td class="text-center">
+                      <a href="user-ubah.php?id=<?php echo $row['id_pengguna'] ?>" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                      <a href="user-hapus.php?id=<?php echo $row['id_pengguna'] ?>" onclick="return confirm('Yakin ingin menghapus data')" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                    </td>
+                    </tr>
+            <?php
     }
     ?>
         </tbody>
     </table>
-<?php include "footer.php"; ?>
+
