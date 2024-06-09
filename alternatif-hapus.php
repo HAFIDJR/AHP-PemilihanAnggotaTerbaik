@@ -7,11 +7,12 @@ include_once 'includes/alternatif.inc.php';
 $pro = new Alternatif($db);
 $id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: missing ID.');
 $pro->id = $id;
-	
-if($pro->delete()){
+
+if ($pro->delete()) {
 	echo "<script>location.href='alternatif.php';</script>";
-} else{
+} else {
 	echo "<script>alert('Gagal Hapus Data');location.href='alternatif.php';</script>";
-		
+
 }
+
 ?>
