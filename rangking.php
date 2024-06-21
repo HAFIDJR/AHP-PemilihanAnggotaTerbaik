@@ -19,7 +19,7 @@ $stmtx1y = $pro->readBob();
 $stmtx2y = $pro->readBob();
 ?>
 <div class="row">
-	<div class="col-xs-12 col-sm-12 col-md-10">
+	<div class="container px-4 ">
 	<br/>
 	
 	    	<div class="row">
@@ -147,7 +147,6 @@ $stmtx2y = $pro->readBob();
 		                <td>
 		                	<?php 
 		                	echo $norx = $rowr['skor_alt_kri']*$row21['bobot_kriteria'];
-							//pow($rowr['skor_alt_kri'],$bobot);
 							$pro->ia = $a1;
 							$pro->ik = $b2;
 							$pro->nn4 = $norx;

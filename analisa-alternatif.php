@@ -10,12 +10,10 @@ $pro2 = new Nilai($db);
 
 ?>
 <div class="row">
-	<div class="col-xs-12 col-sm-12 col-md-10">
-		<ol class="breadcrumb">
-			<li><a href="index.php"><span class="fa fa-home"></span> Beranda</a></li>
-			<li class="active"><span class="fa fa-balance-scale"></span> Analisa Alternatif</li>
-			<li><a href="#" data-toggle="modal" data-target="#myModalalt"><span class="fa fa-table"></span> Tabel
-					Analisa Alternatif</a></li>
+	<div class="container">
+		<ol class="d-flex ">
+			<li><a href="index.php"><span></span> Beranda</a></li>
+			<li class="active"><span class="fa-solid fa-slash"></span> Analisa Alternatif</li>
 		</ol>
 		<!-- Modal -->
 		<div class="modal fade" id="myModalalt" tabindex="-1" role="dialog" aria-labelledby="myModalLabelalt">
@@ -38,12 +36,11 @@ $pro2 = new Nilai($db);
 				</div>
 			</div>
 		</div>
-		<p style="margin-bottom:10px;">
-			<strong style="font-size:18pt;"><span class="fa fa-bomb"></span> Analisa Alternatif</strong>
+		<p style="margin-bottom:10px;" class="ms-4">
+			<strong style="font-size:18pt;" class="ms-1"><span></span> Analisa Alternatif</strong>
 		</p>
-		<div class="panel panel-default">
-
-			<div class="panel-body">
+		<div class="m-3">
+			<div class=" d-flex justify-content-center">
 				<form method="post" action="analisa-alternatif-tabel.php">
 					<div class="row">
 						<div class="col-xs-12 col-md-3">
@@ -53,7 +50,7 @@ $pro2 = new Nilai($db);
 						</div>
 						<div class="col-xs-12 col-md-9">
 							<div class="form-group">
-								<select class="form-control" id="kriteria" name="kriteria">
+								<select class="form-select" id="kriteria" name="kriteria">
 									<?php
 									$stmt4 = $pro3->readAll();
 									while ($row4 = $stmt4->fetch(PDO::FETCH_ASSOC)) { ?>
@@ -93,7 +90,7 @@ $pro2 = new Nilai($db);
 						<?php
 						$colum = $pro1->readAll();
 						while ($colum_new = $colum->fetch(PDO::FETCH_ASSOC)) { ?>
-							<div class="row">
+							<div class="row mb-2">
 								<div class="col-xs-12 col-md-3">
 									<div class="form-group">
 										<?php
@@ -108,11 +105,11 @@ $pro2 = new Nilai($db);
 								</div>
 								<div class="col-xs-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control 1 <?php echo $row_new["id_alternatif"] .
-																			"-" .
-																			$colum_new["id_alternatif"]; ?>" name=<?php echo "nl" . strval($count_select_alternatif + 1);
-																													$count_select_alternatif += 1;
-																													?>>
+										<select id="alternativ-select" class="form-select <?php echo $row_new["id_alternatif"] .
+																								"-" .
+																								$colum_new["id_alternatif"]; ?>" name=<?php echo "nl" . strval($count_select_alternatif + 1);
+																																		$count_select_alternatif += 1;
+																																		?>>
 											<?php
 											// Revisi
 											$stmt1 = $pro2->readAll();
@@ -713,10 +710,73 @@ $pro2 = new Nilai($db);
 					  </div>
 					</div> -->
 
-					<button type="submit" name="subankr" class="btn btn-primary"> Selanjutnya <span class="fa fa-arrow-right"></span></button>
+					<div class="d-flex">
+						<button type="submit" name="subankr" class="btn btn-primary mt-2 me-auto"> Selanjutnya <span class="fa fa-arrow-right"></span></button>
+
+						<button type="button" class="btn btn-warning mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+							Hasil Perhitungan Kriteria
+						</button>
+					</div>
+
+
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h1 class="modal-title fs-5" id="exampleModalLabel">Pilih Kriteria</h1>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<div class="list-group">
+										<?php
+										$stmt5 = $pro3->readAll();
+										while ($row5 = $stmt5->fetch(PDO::FETCH_ASSOC)) { ?>
+											<a href="analisa-alternatif-tabel.php?kriteria=<?php echo $row5["id_kriteria"]; ?>" class="list-group-item"><?php echo $row5["nama_kriteria"]; ?></a>
+										<?php }
+										?>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</form>
 
 			</div>
 		</div>
 	</div>
 </div>
+
+
+<script>
+	function isFloat(value) {
+		if (
+			typeof value === 'number' &&
+			!Number.isNaN(value) &&
+			!Number.isInteger(value)
+		) {
+			return true;
+		}
+
+		return false;
+	}
+
+	$('select#alternativ-select').on('change', function() {
+		let classSelected = $(this)[0].classList[1]
+		let inverseValue = null
+		if (isFloat(Number(this.value))) {
+			inverseValue = 1 / this.value
+			inverseValue = inverseValue.toFixed()
+		} else {
+			inverseValue = 1 / this.value
+			inverseValue = parseFloat(inverseValue.toFixed(3))
+		}
+		let inverseSelected = classSelected.split('-')
+		inverseSelected = inverseSelected[1] + "-" + inverseSelected[0]
+		$(`select.${inverseSelected}`).val(inverseValue)
+
+	});
+</script>

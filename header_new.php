@@ -11,6 +11,7 @@ $db = $config->getConnection();
 <html lang="en">
 
 <head>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Navigation Dasboard</title>
@@ -85,7 +86,7 @@ $db = $config->getConnection();
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
               <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                <img src="https://png.pngtree.com/png-vector/20190710/ourlarge/pngtree-user-vector-avatar-png-image_1541962.jpg" class="avatar img-fluid rounded" alt="" />
+                <img src="image/profile.jpg" class="avatar img-fluid rounded" alt="" />
               </a>
               <div class="dropdown-menu dropdown-menu-end">
                 <a href="#" class="dropdown-item">Profile</a>
@@ -96,12 +97,13 @@ $db = $config->getConnection();
           </ul>
         </div>
       </nav>
+    
+  
 
 
 
 
 
 
-
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-      <script src="js/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="js/index.js"></script>

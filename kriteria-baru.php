@@ -9,7 +9,6 @@ if ($_POST) {
 
 	$eks->id = $_POST['id'];
 	$eks->nm = $_POST['nm'];
-	$eks->bb = $_POST['bb'];
 
 	if ($eks->insert()) {
 		?>
@@ -28,7 +27,7 @@ if ($_POST) {
 	}
 }
 ?>
-		<div class="row">
+		<div class="row m-2">
 		  <div class="col-xs-12 col-sm-12 col-md-8">
 			  <div class="page-header">
 			  <h5>Tambah Kriteria</h5>
@@ -42,25 +41,12 @@ if ($_POST) {
 				  <div class="form-group">
 					<label for="tp">Nama Kriteria</label>
 					<input type="text" class="form-control" name="nm" id="nm" required="">
-					<!-- <select class="form-control" id="nm" name="nm">
-						<option value='benefit'>Benefit</option>
-						<option value='cost'>Cost</option>
-					</select> -->
 				  </div>
-				  <div class="form-group">
-					<label for="jm">Bobot Kriteria</label>
-					<select class="form-control" id="bb" name="bb">
-						<?php
-						$stmt2 = $pgn->readAll();
-						while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) {
-							extract($row2);
-							echo "<option value='{$jum_nilai}'>{$jum_nilai}</option>";
-						}
-						?>
-					</select>
+				  <div class="d-flex ">
+				  <button type="submit" class="btn btn-primary m-2">Simpan</button>
+				  <button type="button" onclick="location.href='kriteria.php'" class="btn btn-success m-2">Kembali</button>
 				  </div>
-				  <button type="submit" class="btn btn-primary">Simpan</button>
-				  <button type="button" onclick="location.href='kriteria.php'" class="btn btn-success">Kembali</button>
+				  
 				</form>
 			  
 		  </div>

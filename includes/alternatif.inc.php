@@ -15,7 +15,7 @@ class Alternatif{
 	
 	function insert(){
 		
-		$query = "insert into ".$this->table_name." values(?,?,'')";
+		$query = "insert into ".$this->table_name." values(?,?,'0')";
 		$stmt = $this->conn->prepare($query);
 		$stmt->bindParam(1, $this->id);
 		$stmt->bindParam(2, $this->nm);

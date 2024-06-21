@@ -4,16 +4,17 @@ include_once 'includes/kriteria.inc.php';
 $pro = new Kriteria($db);
 $stmt = $pro->readAll();
 ?>
-    <div class="row">
+<div class="container px-4">
+
+    <div class="row mt-2">
         <div class="col-md-6 text-left">
             <h4>Data Kriteria</h4>
         </div>
-        <div class="col-md-6 text-right">
+        <div class="col-md-6 text-right ">
             <button onclick="location.href='kriteria-baru.php'" class="btn btn-primary">Tambah Data</button>
         </div>
     </div>
-    <br/>
-
+    <br />
     <table width="100%" class="table table-striped table-bordered" id="tabeldata">
         <thead>
             <tr>
@@ -36,23 +37,25 @@ $stmt = $pro->readAll();
         </tfoot>
 
         <tbody>
-<?php
-$no = 1;
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    ?>
+            <?php
+            $no = 1;
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            ?>
                 <tr>
                     <td><?php echo $no++ ?></td>
                     <td><?php echo $row['id_kriteria'] ?></td>
                     <td><?php echo $row['nama_kriteria'] ?></td>
                     <td><?php echo $row['bobot_kriteria'] ?></td>
-                    <td class="text-center">
-                        <a href="kriteria-ubah.php?id=<?php echo $row['id_kriteria'] ?>" class="btn btn-warning"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                        <a href="kriteria-hapus.php?id=<?php echo $row['id_kriteria'] ?>" onclick="return confirm('Yakin ingin menghapus data')" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                    <td class="text-center d-flex justify-content-between">
+                        <a href="kriteria-ubah.php?id=<?php echo $row['id_kriteria'] ?>" class="btn btn-warning"><span class="fa-solid fa-pen-to-square" aria-hidden="true"></span></a>
+                        <a href="kriteria-hapus.php?id=<?php echo $row['id_kriteria'] ?>" onclick="return confirm('Yakin ingin menghapus data')" class="btn btn-danger"><span class="fa-solid fa-trash" aria-hidden="true"></span></a>
                     </td>
                 </tr>
-    <?php
-}
-?>
+            <?php
+            }
+            ?>
         </tbody>
 
-    </table>		
+    </table>
+
+</div>
